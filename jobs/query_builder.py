@@ -13,7 +13,7 @@ def param_occurances_multiple_values(input_str, param, param_list):
     for replace_values in resutls:
         random_param = ""
         for i in range(int(replace_values)):
-            random_param = f"{random_param},'{random.choice(param_list)}'"
+            random_param = f"{random_param},'{random.choice(param_list).strip()}'"
         input_str = input_str.replace(
             f"${param}:{int(replace_values)}#", random_param.lstrip(",")
         )
@@ -21,7 +21,7 @@ def param_occurances_multiple_values(input_str, param, param_list):
 
 
 def param_occurances_single_value(input_str, param, param_list):
-    random_param = random.choice(param_list)
+    random_param = random.choice(param_list).strip()
     input_str = input_str.replace(f"${param}", f"'{random_param}'")
     return input_str
 
